@@ -1,0 +1,19 @@
+#!/bin/sh
+
+if [ -z $1 ]; then
+    SIZE=15
+else
+    if [ "$1" == "-h" ]; then
+        echo "Usage: $0 [size [font]]"
+        exit 0
+    fi
+    SIZE=$1
+fi
+
+if [ -z $2 ]; then
+    FONT="DejaVuSansMono"
+else
+    FONT="$2"
+fi
+
+printf '\33]50;%s%d\007' "xft:${FONT}:pixelsize=" ${SIZE}
